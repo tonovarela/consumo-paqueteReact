@@ -1,24 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
+import { ProductCard,ProductImage,ProductTitle,ProductButtons } from  'varela-product-card'
+
+
 import './App.css';
 
 function App() {
+  const product ={
+    id:"1",
+    title: 'Primer producto',
+    img: 'https://picsum.photos/id/1025/200/200',    
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App App-header">
+      <ProductCard  product={product} initialValues={{ count: 4, maxCount: 15 }} >
+        {
+          ({ reset, isMaxCountReached, count, increaseBy }) => (
+            <>
+              <ProductImage/>
+              <ProductTitle/>
+              <ProductButtons/>
+              {count}
+              
+            </>
+          )
+        }
+      </ProductCard>
+      <ProductCard  product={product} initialValues={{ count: 4, maxCount: 15 }} >        
+        {
+          ({ reset, isMaxCountReached, count, increaseBy }) => (
+            <>
+              <ProductImage/>
+              <ProductTitle/>
+              <ProductButtons/>
+              
+            </>
+          )
+        }
+      </ProductCard>
     </div>
   );
 }
